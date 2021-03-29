@@ -11,13 +11,13 @@ public class Seller extends User{
 
     public Seller(Restaurant restaurant) {
         this.restaurant = restaurant;
-        sales = new ArrayList<Order>();
+        this.sales = new ArrayList<Order>();
     }
 
     public Seller(String username, String fullname, String email, String password, String phonenumber, String adress, String cardnumber, Restaurant restaurant) {
         super(username, fullname, email, password, phonenumber, adress, cardnumber);
         this.restaurant = restaurant;
-        sales = new ArrayList<Order>();
+        this.sales = new ArrayList<Order>();
     }
 
     @Override

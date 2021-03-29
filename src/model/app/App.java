@@ -23,18 +23,18 @@ public class App {
     public App() {
 //        restaurants = new Set<Restaurant>();
 //        users = new Set<User>(){};
-        restaurants = new ArrayList<Restaurant>();
-        users = new ArrayList<User>();
-        drivers = new ArrayList<Driver>();
-        sellers = new ArrayList<Seller>();
-        admins = new ArrayList<Admin>();
-        orders = new ArrayList<Order>();
-        Admin admin = new Admin("admin","Admin Admin","admin@admin.ro","admin","0000000000","Admin Adress","0000 0000 0000 0000");
+        this.restaurants = new ArrayList<Restaurant>();
+        this.users = new ArrayList<User>();
+        this.drivers = new ArrayList<Driver>();
+        this.sellers = new ArrayList<Seller>();
+        this.admins = new ArrayList<Admin>();
+        this.orders = new ArrayList<Order>();
+        Admin admin = new Admin("admin", "Admin Admin", "admin@admin.ro", "admin", "0000000000", "Admin Adress", "0000 0000 0000 0000");
         addAdmin(admin);
     }
 
-    public static App App(){
-        if (instance == null){
+    public static App App() {
+        if (instance == null) {
             instance = new App();
         }
         return instance;
@@ -88,24 +88,30 @@ public class App {
         this.orders = orders;
     }
 
-    public void addUser(User user){
-        users.add(user);
+    public void addUser(User user) {
+        this.users.add(user);
     }
 
-    public void addDriver(Driver driver){
-        drivers.add(driver);
-        users.add(driver);
+    public void addDriver(Driver driver) {
+        this.drivers.add(driver);
+        this.users.add(driver);
     }
 
-    public void addSeller(Seller seller){
-        sellers.add(seller);
-        users.add(seller);
+    public void addSeller(Seller seller) {
+        this.sellers.add(seller);
+        this.users.add(seller);
     }
 
-    public void addAdmin(Admin admin){
-        admins.add(admin);
-        users.add(admin);
+    public void addAdmin(Admin admin) {
+        this.admins.add(admin);
+        this.users.add(admin);
     }
 
+    public void addOrder(Order order){
+        this.orders.add(order);
+    }
 
+    public void addRestaurant(Restaurant restaurant){
+        this.restaurants.add(restaurant);
+    }
 }

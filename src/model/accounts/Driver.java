@@ -11,13 +11,13 @@ public class Driver extends User{
 
     public Driver(String username, String fullname, String email, String password, String phonenumber, String adress, String cardnumber) {
         super(username, fullname, email, password, phonenumber, adress, cardnumber);
-        deliveries = new ArrayList<Order>();
+        this.deliveries = new ArrayList<Order>();
     }
 
     public Driver(String username, String fullname, String email, String password, String phonenumber, String adress, String cardnumber, Car car) {
         super(username, fullname, email, password, phonenumber, adress, cardnumber);
         this.car = car;
-        deliveries = new ArrayList<Order>();
+        this.deliveries = new ArrayList<Order>();
     }
 
     @Override

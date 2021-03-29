@@ -25,6 +25,7 @@ public class Order {
 
     public Order(User user) {
         this.user = user;
+        this.driver = null;
         products = new ArrayList<Pair<Product,Integer>>();
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         createdate = LocalDateTime.now();
@@ -35,6 +36,8 @@ public class Order {
         this.driver = driver;
         products = new ArrayList<Pair<Product,Integer>>();
     }
+
+
 
     @Override
     public String toString() {
@@ -88,5 +91,10 @@ public class Order {
 
     public LocalDateTime getCreatedate() {
         return createdate;
+    }
+
+    public void addProduct(Product product,int quantity){
+        Pair<Product,Integer> p = new Pair<>(product,quantity);
+        products.add(p);
     }
 }

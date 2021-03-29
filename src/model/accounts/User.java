@@ -1,5 +1,7 @@
 package model.accounts;
 import model.order.Order;
+
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
@@ -12,9 +14,11 @@ public class User{
     protected String phonenumber;
     protected String address;
     protected String cardnumber;
-    protected Set<Order> orders;
+    protected ArrayList<Order> orders;
+//    protected Set<Order> orders;
 
     public User() {
+        this.orders = new ArrayList<>();
     }
 
     public User(String username, String fullname, String email, String password, String phonenumber, String address, String cardnumber) {
@@ -25,6 +29,7 @@ public class User{
         this.phonenumber = phonenumber;
         this.address = address;
         this.cardnumber = cardnumber;
+        this.orders = new ArrayList<Order>();
     }
 
     @Override
@@ -100,11 +105,20 @@ public class User{
         this.cardnumber = cardnumber;
     }
 
-    public Set<Order> getOrders() {
+    public ArrayList<Order> getOrders() {
         return orders;
     }
 
     /*public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }*/
+
+    public void addOrder(Order order){
+        System.out.println(this.orders);
+        System.out.println(order);
+        this.orders.add(order);
+//        System.out.println(order);
+//        System.out.println(this.orders);
+//        System.out.println(orders.size());
+    }
 }
