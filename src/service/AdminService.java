@@ -23,8 +23,37 @@ public class AdminService {
                 System.out.println("Exiting...");
                 break;
             }
-            for (;;){
-
+            switch (option){
+                case 1:
+                    System.out.println(app.getUsers());
+                    scanner.nextLine();
+                    scanner.nextLine();
+                    break;
+                case 2:
+                    System.out.println(app.getDrivers());
+                    scanner.nextLine();
+                    scanner.nextLine();
+                    break;
+                case 3:
+                    System.out.println(app.getSellers());
+                    scanner.nextLine();
+                    scanner.nextLine();
+                    break;
+                case 4:
+                    System.out.println(app.getRestaurants());
+                    scanner.nextLine();
+                    scanner.nextLine();
+                    break;
+                case 5:
+                    System.out.println(app.getOrders());
+                    scanner.nextLine();
+                    scanner.nextLine();
+                    break;
+                default:
+                    System.out.println("Invalid option");
+                    scanner.nextLine();
+                    scanner.nextLine();
+                    break;
             }
         }
     }

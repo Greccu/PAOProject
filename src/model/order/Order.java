@@ -4,6 +4,9 @@ import model.accounts.Driver;
 import model.accounts.User;
 import model.others.Pair;
 import model.products.Product;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -13,6 +16,7 @@ public class Order {
     private String status = "created";
     private User user;
     private Driver driver;
+    private LocalDateTime createdate;
     private ArrayList<Pair<Product,Integer>> products; // <product, quantity> // list always sorted by quantity
 
 //        Product p = new Product();
@@ -22,6 +26,8 @@ public class Order {
     public Order(User user) {
         this.user = user;
         products = new ArrayList<Pair<Product,Integer>>();
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        createdate = LocalDateTime.now();
     }
 
     public Order(User user, Driver driver) {
@@ -36,6 +42,7 @@ public class Order {
                 "user=" + user +
                 ", driver=" + driver +
                 ", products=" + products +
+                ", createdate=" + createdate+
                 '}';
     }
 
@@ -77,5 +84,9 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public LocalDateTime getCreatedate() {
+        return createdate;
     }
 }
