@@ -1,17 +1,23 @@
 package model.accounts;
 
+import model.order.Order;
 import model.restaurant.Restaurant;
+
+import java.util.ArrayList;
 
 public class Seller extends User{
     Restaurant restaurant;
+    private ArrayList<Order> sales;
 
     public Seller(Restaurant restaurant) {
         this.restaurant = restaurant;
+        sales = new ArrayList<Order>();
     }
 
     public Seller(String username, String fullname, String email, String password, String phonenumber, String adress, String cardnumber, Restaurant restaurant) {
         super(username, fullname, email, password, phonenumber, adress, cardnumber);
         this.restaurant = restaurant;
+        sales = new ArrayList<Order>();
     }
 
     @Override
@@ -23,8 +29,9 @@ public class Seller extends User{
                 ", fullname='" + fullname + '\'' +
                 ", email='" + email + '\'' +
                 ", phonenumber='" + phonenumber + '\'' +
-                ", adress='" + adress + '\'' +
+                ", adress='" + address + '\'' +
                 ", orders=" + orders +
+                ", sales=" + sales +
                 '}';
     }
 
@@ -34,5 +41,9 @@ public class Seller extends User{
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public ArrayList<Order> getSales() {
+        return sales;
     }
 }

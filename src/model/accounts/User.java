@@ -10,20 +10,20 @@ public class User{
     protected String email;
     protected String password;
     protected String phonenumber;
-    protected String adress;
+    protected String address;
     protected String cardnumber;
     protected Set<Order> orders;
 
     public User() {
     }
 
-    public User(String username, String fullname, String email, String password, String phonenumber, String adress, String cardnumber) {
+    public User(String username, String fullname, String email, String password, String phonenumber, String address, String cardnumber) {
         this.username = username;
         this.fullname = fullname;
         this.email = email;
         this.password = password;
         this.phonenumber = phonenumber;
-        this.adress = adress;
+        this.address = address;
         this.cardnumber = cardnumber;
     }
 
@@ -34,7 +34,7 @@ public class User{
                 ", fullname='" + fullname + '\'' +
                 ", email='" + email + '\'' +
                 ", phonenumber='" + phonenumber + '\'' +
-                ", adress='" + adress + '\'' +
+                ", address='" + address + '\'' +
                 ", orders=" + orders +
                 '}';
     }
@@ -84,12 +84,12 @@ public class User{
         this.phonenumber = phonenumber;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCardnumber() {

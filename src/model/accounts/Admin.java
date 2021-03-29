@@ -16,7 +16,7 @@ public class Admin extends User{
                 ", fullname='" + fullname + '\'' +
                 ", email='" + email + '\'' +
                 ", phonenumber='" + phonenumber + '\'' +
-                ", adress='" + adress + '\'' +
+                ", adress='" + address + '\'' +
                 ", orders=" + orders +
                 '}';
     }

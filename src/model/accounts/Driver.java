@@ -2,26 +2,22 @@ package model.accounts;
 
 import model.others.Car;
 import model.order.Order;
-import java.util.Set;
+
+import java.util.ArrayList;
 
 public class Driver extends User{
     private Car car;
-    private Set<Order> deliveries;
-
-    public Driver() {
-    }
-
-    public Driver(Car car) {
-        this.car = car;
-    }
+    private ArrayList<Order> deliveries;
 
     public Driver(String username, String fullname, String email, String password, String phonenumber, String adress, String cardnumber) {
         super(username, fullname, email, password, phonenumber, adress, cardnumber);
+        deliveries = new ArrayList<Order>();
     }
 
     public Driver(String username, String fullname, String email, String password, String phonenumber, String adress, String cardnumber, Car car) {
         super(username, fullname, email, password, phonenumber, adress, cardnumber);
         this.car = car;
+        deliveries = new ArrayList<Order>();
     }
 
     @Override
@@ -33,7 +29,7 @@ public class Driver extends User{
                 ", fullname='" + fullname + '\'' +
                 ", email='" + email + '\'' +
                 ", phonenumber='" + phonenumber + '\'' +
-                ", adress='" + adress + '\'' +
+                ", adress='" + address + '\'' +
                 ", orders=" + orders +
                 '}';
     }
@@ -46,7 +42,7 @@ public class Driver extends User{
         this.car = car;
     }
 
-    public Set<Order> getDeliveries() {
+    public ArrayList<Order> getDeliveries() {
         return deliveries;
     }
 
