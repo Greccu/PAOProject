@@ -8,6 +8,7 @@ import model.products.Product;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.UUID;
 
 
@@ -26,9 +27,9 @@ public class Order {
     public Order(User user) {
         this.user = user;
         this.driver = null;
-        products = new ArrayList<Pair<Product,Integer>>();
+        this.products = new ArrayList<Pair<Product,Integer>>();
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-        createdate = LocalDateTime.now();
+        this.createdate = LocalDateTime.now();
     }
 
     public Order(User user, Driver driver) {
@@ -41,11 +42,23 @@ public class Order {
 
     @Override
     public String toString() {
+        String prod = new String();
+        prod += "[";
+        for (Pair<Product,Integer> p : products){
+            prod+= "("+p.getFirst().getName() + " " + p.getSecond() + "),";
+        }
+        prod += "]";
+        if (driver == null)
+           return  "Order{" +
+                "user=" + user.getFullname() +
+                ", products=" + prod +
+                ", createdate=" + createdate +
+                '}';
         return "Order{" +
-                "user=" + user +
-                ", driver=" + driver +
-                ", products=" + products +
-                ", createdate=" + createdate+
+                "user = " + user.getFullname() +
+                ", driver = " + driver.getFullname() +
+                ", products = " + prod +
+                ", createdate = " + createdate +
                 '}';
     }
 
@@ -94,7 +107,10 @@ public class Order {
     }
 
     public void addProduct(Product product,int quantity){
-        Pair<Product,Integer> p = new Pair<>(product,quantity);
+        Integer q = quantity;
+        Pair<Product,Integer> p = new Pair<>(product,q);
         products.add(p);
+        Collections.sort(products);
+//        products.sort(Comparable<Pair<Product,Integer>>);
     }
 }

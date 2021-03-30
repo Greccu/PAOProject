@@ -1,5 +1,7 @@
 package model.accounts;
 import model.order.Order;
+import model.products.Product;
+import model.restaurant.Restaurant;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -29,7 +31,7 @@ public class User{
         this.phonenumber = phonenumber;
         this.address = address;
         this.cardnumber = cardnumber;
-        this.orders = new ArrayList<Order>();
+        orders = new ArrayList<Order>();
     }
 
     @Override
@@ -40,7 +42,7 @@ public class User{
                 ", email='" + email + '\'' +
                 ", phonenumber='" + phonenumber + '\'' +
                 ", address='" + address + '\'' +
-                ", orders=" + orders +
+                //", orders=" + orders +
                 '}';
     }
 
