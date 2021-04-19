@@ -8,17 +8,18 @@ import model.order.Order;
 import model.restaurant.Restaurant;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class App {
     private static App instance = null;     //singleton instance
 
-    private ArrayList<Restaurant> restaurants;
-    private ArrayList<User> users;
-    private ArrayList<Driver> drivers;
-    private ArrayList<Seller> sellers;
-    private ArrayList<Admin> admins;
-    private ArrayList<Order> orders;
+    private List<Restaurant> restaurants;
+    private List<User> users;
+    private List<Driver> drivers;
+    private List<Seller> sellers;
+    private List<Admin> admins;
+    private List<Order> orders;
 
     public App() {
 //        restaurants = new Set<Restaurant>();
@@ -40,51 +41,51 @@ public class App {
         return instance;
     }
 
-    public ArrayList<Restaurant> getRestaurants() {
+    public List<Restaurant> getRestaurants() {
         return restaurants;
     }
 
-    public void setRestaurants(ArrayList<Restaurant> restaurants) {
+    public void setRestaurants(List<Restaurant> restaurants) {
         this.restaurants = restaurants;
     }
 
-    public ArrayList<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(ArrayList<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 
-    public ArrayList<Driver> getDrivers() {
+    public List<Driver> getDrivers() {
         return drivers;
     }
 
-    public void setDrivers(ArrayList<Driver> drivers) {
+    public void setDrivers(List<Driver> drivers) {
         this.drivers = drivers;
     }
 
-    public ArrayList<Seller> getSellers() {
+    public List<Seller> getSellers() {
         return sellers;
     }
 
-    public void setSellers(ArrayList<Seller> sellers) {
+    public void setSellers(List<Seller> sellers) {
         this.sellers = sellers;
     }
 
-    public ArrayList<Admin> getAdmins() {
+    public List<Admin> getAdmins() {
         return admins;
     }
 
-    public void setAdmins(ArrayList<Admin> admins) {
+    public void setAdmins(List<Admin> admins) {
         this.admins = admins;
     }
 
-    public ArrayList<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(ArrayList<Order> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 

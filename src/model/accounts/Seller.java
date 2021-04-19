@@ -4,10 +4,11 @@ import model.order.Order;
 import model.restaurant.Restaurant;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Seller extends User{
-    Restaurant restaurant;
-    private ArrayList<Order> sales;
+    private Restaurant restaurant;
+    private List<Order> sales;
 
     public Seller(Restaurant restaurant) {
         this.restaurant = restaurant;
@@ -26,9 +27,9 @@ public class Seller extends User{
                 "restaurant=" + restaurant +
                 ", id='" + id + '\'' +
                 ", username='" + username + '\'' +
-                ", fullname='" + fullname + '\'' +
+                ", fullname='" + fullName + '\'' +
                 ", email='" + email + '\'' +
-                ", phonenumber='" + phonenumber + '\'' +
+                ", phonenumber='" + phoneNumber + '\'' +
                 ", adress='" + address + '\'' +
                 ", orders=" + orders +
                 ", sales=" + sales +
@@ -43,7 +44,7 @@ public class Seller extends User{
         this.restaurant = restaurant;
     }
 
-    public ArrayList<Order> getSales() {
+    public List<Order> getSales() {
         return sales;
     }
 }

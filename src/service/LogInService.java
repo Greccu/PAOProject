@@ -11,8 +11,9 @@ import model.restaurant.Restaurant;
 import java.util.Scanner;
 
 public class LogInService {
+    private Scanner scanner = new Scanner(System.in);
     public void Main(App app) {
-        Scanner scanner = new Scanner(System.in);
+
         int option;
         for (; ; ) {
             System.out.println("Select an option");
@@ -57,6 +58,8 @@ public class LogInService {
                         } else if (user instanceof Seller) {
 //                            System.out.println("Logged in as Seller");
                             //seller service
+                            SellerService sellerService = new SellerService();
+                            sellerService.Main(app, (Seller)user);
                             break;
                         } else {
 //                            System.out.println("Logged in as Normal User");
@@ -92,7 +95,6 @@ public class LogInService {
     }
 
     private void signup(int type, App app) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Username");
         String username = scanner.next();
         System.out.println("Password");

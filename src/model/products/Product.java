@@ -1,13 +1,13 @@
 package model.products;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 public class Product {
     private final String id = UUID.randomUUID().toString();
     private String name;
-//    private Set<Ingredient> ingredients;
-    ArrayList<Ingredient> ingredients;
+    List<Ingredient> ingredients;
     private double price;
 
     public  Product(){
@@ -17,7 +17,6 @@ public class Product {
         this.name = name;
         this.ingredients = ingredients;
         this.price = price;
-        ingredients = new ArrayList<Ingredient>();
     }
 
     public Product(String name, double price) {
@@ -44,7 +43,7 @@ public class Product {
         this.name = name;
     }
 
-    public ArrayList<Ingredient> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 

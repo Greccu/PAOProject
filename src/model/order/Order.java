@@ -17,7 +17,7 @@ public class Order {
     private String status = "created";
     private User user;
     private Driver driver;
-    private LocalDateTime createdate;
+    private LocalDateTime createDate;
     private ArrayList<Pair<Product,Integer>> products; // <product, quantity> // list always sorted by quantity
 
 //        Product p = new Product();
@@ -29,7 +29,7 @@ public class Order {
         this.driver = null;
         this.products = new ArrayList<Pair<Product,Integer>>();
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-        this.createdate = LocalDateTime.now();
+        this.createDate = LocalDateTime.now();
     }
 
     public Order(User user, Driver driver) {
@@ -50,15 +50,15 @@ public class Order {
         prod += "]";
         if (driver == null)
            return  "Order{" +
-                "user=" + user.getFullname() +
+                "user=" + user.getFullName() +
                 ", products=" + prod +
-                ", createdate=" + createdate +
+                ", createdate=" + createDate +
                 '}';
         return "Order{" +
-                "user = " + user.getFullname() +
-                ", driver = " + driver.getFullname() +
+                "user = " + user.getFullName() +
+                ", driver = " + driver.getFullName() +
                 ", products = " + prod +
-                ", createdate = " + createdate +
+                ", createdate = " + createDate +
                 '}';
     }
 
@@ -102,8 +102,8 @@ public class Order {
         this.status = status;
     }
 
-    public LocalDateTime getCreatedate() {
-        return createdate;
+    public LocalDateTime getCreateDate() {
+        return createDate;
     }
 
     public void addProduct(Product product,int quantity){

@@ -4,10 +4,11 @@ import model.others.Car;
 import model.order.Order;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Driver extends User{
     private Car car;
-    private ArrayList<Order> deliveries;
+    private List<Order> deliveries;
 
     public Driver(String username, String fullname, String email, String password, String phonenumber, String adress, String cardnumber) {
         super(username, fullname, email, password, phonenumber, adress, cardnumber);
@@ -26,9 +27,9 @@ public class Driver extends User{
                 "car=" + car +
                 ", deliveries=" + deliveries +
                 ", username='" + username + '\'' +
-                ", fullname='" + fullname + '\'' +
+                ", fullname='" + fullName + '\'' +
                 ", email='" + email + '\'' +
-                ", phonenumber='" + phonenumber + '\'' +
+                ", phonenumber='" + phoneNumber + '\'' +
                 ", adress='" + address + '\'' +
                 ", orders=" + orders +
                 '}';
@@ -42,7 +43,7 @@ public class Driver extends User{
         this.car = car;
     }
 
-    public ArrayList<Order> getDeliveries() {
+    public List<Order> getDeliveries() {
         return deliveries;
     }
 

@@ -10,8 +10,8 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class UserService {
+    Scanner scanner = new Scanner(System.in);
     public void Main(App app, User user) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("\nLogged in as User");
         System.out.println(user);
         for (; ; ) {
@@ -50,7 +50,6 @@ public class UserService {
     }
 
     public void createOrder(App app, User user) {
-        Scanner scanner = new Scanner(System.in);
         Order order = new Order(user);
         System.out.println("Order created");
         for (; ; ) {
@@ -78,7 +77,7 @@ public class UserService {
                 String sc = scanner.next();
                 Restaurant restaurant = null;
                 for (Restaurant res : app.getRestaurants()) {
-                    if (res.getName().toLowerCase().equals(sc.toLowerCase())) {
+                    if (res.getName().equalsIgnoreCase(sc)) {
                         restaurant = res;
                     }
                 }
@@ -106,7 +105,7 @@ public class UserService {
                             String name = scanner.next();
                             Product product = null;
                             for (Product p : restaurant.getMenu()) {
-                                if (p.getName().toLowerCase().equals(name.toLowerCase())){
+                                if (p.getName().equalsIgnoreCase(name)){
                                     product = p;
                                 }
                             }
@@ -144,7 +143,6 @@ public class UserService {
     }
 
     public void accountSettings(App app, User user){
-        Scanner scanner = new Scanner(System.in);
         for(;;){
             System.out.println("Select option");
             System.out.println("1. Show info");

@@ -6,21 +6,21 @@ public class Car {
     private final String id = UUID.randomUUID().toString();
     private String brand;
     private String model;
-    private String numberplate;
-    private int fabricationyear;
-    private int horsepower;
+    private String numberPlate;
+    private int fabricationYear;
+    private int horsePower;
 
 
 
     public Car() {
     }
 
-    public Car(String brand, String model, String numberplate, int fabricationyear, int horsepower) {
+    public Car(String brand, String model, String numberPlate, int fabricationYear, int horsePower) {
         this.brand = brand;
         this.model = model;
-        this.numberplate = numberplate;
-        this.fabricationyear = fabricationyear;
-        this.horsepower = horsepower;
+        this.numberPlate = numberPlate;
+        this.fabricationYear = fabricationYear;
+        this.horsePower = horsePower;
     }
 
     @Override
@@ -28,9 +28,9 @@ public class Car {
         return "Car{" +
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
-                ", numberplate='" + numberplate + '\'' +
-                ", fabricationyear=" + fabricationyear +
-                ", horsepower=" + horsepower +
+                ", numberPlate='" + numberPlate + '\'' +
+                ", fabricationYear=" + fabricationYear +
+                ", horsePower=" + horsePower +
                 '}';
     }
 
@@ -54,27 +54,27 @@ public class Car {
         this.model = model;
     }
 
-    public String getNumberplate() {
-        return numberplate;
+    public String getNumberPlate() {
+        return numberPlate;
     }
 
-    public void setNumberplate(String numberplate) {
-        this.numberplate = numberplate;
+    public void setNumberPlate(String numberPlate) {
+        this.numberPlate = numberPlate;
     }
 
-    public int getFabricationyear() {
-        return fabricationyear;
+    public int getFabricationYear() {
+        return fabricationYear;
     }
 
-    public void setFabricationyear(int fabricationyear) {
-        this.fabricationyear = fabricationyear;
+    public void setFabricationYear(int fabricationYear) {
+        this.fabricationYear = fabricationYear;
     }
 
-    public int getHorsepower() {
-        return horsepower;
+    public int getHorsePower() {
+        return horsePower;
     }
 
-    public void setHorsepower(int horsepower) {
-        this.horsepower = horsepower;
+    public void setHorsePower(int horsePower) {
+        this.horsePower = horsePower;
     }
 }

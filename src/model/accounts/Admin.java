@@ -13,9 +13,9 @@ public class Admin extends User{
         return "Admin{" +
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
-                ", fullname='" + fullname + '\'' +
+                ", fullname='" + fullName + '\'' +
                 ", email='" + email + '\'' +
-                ", phonenumber='" + phonenumber + '\'' +
+                ", phonenumber='" + phoneNumber + '\'' +
                 ", adress='" + address + '\'' +
                 ", orders=" + orders +
                 '}';

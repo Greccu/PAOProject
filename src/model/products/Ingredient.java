@@ -6,11 +6,11 @@ import java.util.UUID;
 public class Ingredient {
     private final String id = UUID.randomUUID().toString();
     private String name;
-    private Date expirydate;
+    private Date expiryDate;
 
-    public Ingredient(String name, Date expirydate) {
+    public Ingredient(String name, Date expiryDate) {
         this.name = name;
-        this.expirydate = expirydate;
+        this.expiryDate = expiryDate;
     }
 
     @Override
@@ -18,7 +18,7 @@ public class Ingredient {
         return "Ingredient{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", expirydate=" + expirydate +
+                ", expirydate=" + expiryDate +
                 '}';
     }
 
@@ -34,11 +34,11 @@ public class Ingredient {
         this.name = name;
     }
 
-    public Date getExpirydate() {
-        return expirydate;
+    public Date getExpiryDate() {
+        return expiryDate;
     }
 
-    public void setExpirydate(Date expirydate) {
-        this.expirydate = expirydate;
+    public void setExpiryDate(Date expiryDate) {
+        this.expiryDate = expiryDate;
     }
 }

@@ -1,36 +1,34 @@
 package model.accounts;
 import model.order.Order;
-import model.products.Product;
-import model.restaurant.Restaurant;
 
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 public class User{
     protected final String id = UUID.randomUUID().toString();
     protected String username;
-    protected String fullname;
+    protected String fullName;
     protected String email;
     protected String password;
-    protected String phonenumber;
+    protected String phoneNumber;
     protected String address;
-    protected String cardnumber;
-    protected ArrayList<Order> orders;
+    protected String cardNumber;
+    protected List<Order> orders;
 //    protected Set<Order> orders;
 
     public User() {
         this.orders = new ArrayList<>();
     }
 
-    public User(String username, String fullname, String email, String password, String phonenumber, String address, String cardnumber) {
+    public User(String username, String fullName, String email, String password, String phoneNumber, String address, String cardNumber) {
         this.username = username;
-        this.fullname = fullname;
+        this.fullName = fullName;
         this.email = email;
         this.password = password;
-        this.phonenumber = phonenumber;
+        this.phoneNumber = phoneNumber;
         this.address = address;
-        this.cardnumber = cardnumber;
+        this.cardNumber = cardNumber;
         orders = new ArrayList<Order>();
     }
 
@@ -38,9 +36,9 @@ public class User{
     public String toString() {
         return "User{" +
                 "username='" + username + '\'' +
-                ", fullname='" + fullname + '\'' +
+                ", fullname='" + fullName + '\'' +
                 ", email='" + email + '\'' +
-                ", phonenumber='" + phonenumber + '\'' +
+                ", phonenumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
                 //", orders=" + orders +
                 '}';
@@ -59,12 +57,12 @@ public class User{
         this.username = username;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -83,12 +81,12 @@ public class User{
         this.password = password;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getAddress() {
@@ -99,15 +97,15 @@ public class User{
         this.address = address;
     }
 
-    public String getCardnumber() {
-        return cardnumber;
+    public String getCardNumber() {
+        return cardNumber;
     }
 
-    public void setCardnumber(String cardnumber) {
-        this.cardnumber = cardnumber;
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
-    public ArrayList<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 

@@ -7,8 +7,8 @@ import model.app.App;
 import java.util.Scanner;
 
 public class AdminService {
+    private Scanner scanner = new Scanner(System.in);
     public void Main(App app, Admin admin) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("\nLogged in as Admin");
         System.out.println(admin);
         for(;;){
