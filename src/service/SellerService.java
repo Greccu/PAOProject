@@ -13,7 +13,7 @@ public class SellerService {
     private final Scanner scanner = new Scanner(System.in);
     ProductService productService = new ProductService();
     public void Main(App app, Seller seller) {
-        System.out.println("\nLogged in as Admin");
+        System.out.println("\nLogged in as Seller");
         int option;
         for(;;){
             System.out.println("Select an option");

@@ -14,11 +14,11 @@ import java.util.UUID;
 
 public class Order {
     private final String id = UUID.randomUUID().toString();
-    private String status = "created";
+    private String status = "created"; //status = {created, delivering, delivered, cancelled}
     private User user;
     private Driver driver;
     private LocalDateTime createDate;
-    private ArrayList<Pair<Product,Integer>> products; // <product, quantity> // list always sorted by quantity
+    private ArrayList<Pair<Product, Integer>> products; // <product, quantity> // list always sorted by quantity
 
 //        Product p = new Product();
 //        Pair<Product,Integer> pp = new Pair<Product, Integer>(p,1);
@@ -27,45 +27,48 @@ public class Order {
     public Order(User user) {
         this.user = user;
         this.driver = null;
-        this.products = new ArrayList<Pair<Product,Integer>>();
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        this.products = new ArrayList<Pair<Product, Integer>>();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         this.createDate = LocalDateTime.now();
     }
 
     public Order(User user, Driver driver) {
         this.user = user;
         this.driver = driver;
-        products = new ArrayList<Pair<Product,Integer>>();
+        products = new ArrayList<Pair<Product, Integer>>();
     }
-
 
 
     @Override
     public String toString() {
         String prod = new String();
         prod += "[";
-        for (Pair<Product,Integer> p : products){
-            prod+= "("+p.getFirst().getName() + " " + p.getSecond() + "),";
+        for (Pair<Product, Integer> p : products) {
+            prod += "(" + p.getFirst().getName() + " " + p.getSecond() + "),";
         }
         prod += "]";
         if (driver == null)
-           return  "Order{" +
-                "user=" + user.getFullName() +
-                ", products=" + prod +
-                ", createdate=" + createDate +
-                '}';
+            return "Order{" +
+                    "user=" + user.getFullName() +
+                    ", status=" + status +
+                    ", products=" + prod +
+                    ", createdate=" + createDate +
+                    ", price= " + getTotalPrice() +
+                    '}';
         return "Order{" +
                 "user = " + user.getFullName() +
                 ", driver = " + driver.getFullName() +
+                "status=" + status +
                 ", products = " + prod +
                 ", createdate = " + createDate +
+                ", price= " + getTotalPrice() +
                 '}';
     }
 
-    public double getTotalPrice(){
+    public double getTotalPrice() {
         double total = 0;
-        for (Pair<Product,Integer> p: products){
-            total+= p.getSecond()*p.getFirst().getPrice();
+        for (Pair<Product, Integer> p : products) {
+            total += p.getSecond() * p.getFirst().getPrice();
         }
         return total;
     }
@@ -106,9 +109,9 @@ public class Order {
         return createDate;
     }
 
-    public void addProduct(Product product,int quantity){
+    public void addProduct(Product product, int quantity) {
         Integer q = quantity;
-        Pair<Product,Integer> p = new Pair<>(product,q);
+        Pair<Product, Integer> p = new Pair<>(product, q);
         products.add(p);
         Collections.sort(products);
 //        products.sort(Comparable<Pair<Product,Integer>>);

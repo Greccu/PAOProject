@@ -16,6 +16,8 @@ public class LogInService {
 
         int option;
         for (; ; ) {
+//            System.out.print("\033[H\033[2J");
+//            System.out.flush();
             System.out.println("Select an option");
             System.out.println("1. Login");
             System.out.println("2. Sign up");
@@ -54,6 +56,8 @@ public class LogInService {
                         } else if (user instanceof Driver) {
 //                            System.out.println("Logged in as Driver");
                             //driver service
+                            DriverService driverService = new DriverService();
+                            driverService.Main(app, (Driver)user);
                             break;
                         } else if (user instanceof Seller) {
 //                            System.out.println("Logged in as Seller");

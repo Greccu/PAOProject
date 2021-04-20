@@ -19,16 +19,19 @@ public class ProductService {
         System.out.println("Enter Product Price");
         double price = scanner.nextDouble();
         System.out.println("Enter ingredients list");
+        scanner.nextLine();
         for (; ; ) {
             System.out.println("Add another ingredient? Y/N");
-            String op = scanner.next();
+            String op = scanner.nextLine();
             if (op.equals("Y")) {
                 System.out.println("Enter ingredient name");
                 String ingName = scanner.nextLine();
+
                 for (; ; ) {
                     try {
-                        System.out.println("Enter expiry date(format = dd/mm/yyyy");
-                        Date date = new SimpleDateFormat("dd/mm/yyyy").parse(scanner.nextLine());
+                        System.out.println("Enter expiry date(format = dd/mm/yyyy)");
+                        String d = scanner.nextLine();
+                        Date date = new SimpleDateFormat("dd/mm/yyyy").parse(d);
                         break;
                     } catch (java.text.ParseException e) {
                         System.out.println("Invalid date format");

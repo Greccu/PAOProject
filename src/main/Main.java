@@ -20,9 +20,12 @@ public class Main {
         restaurant.addProduct(product1);
         restaurant.addProduct(product2);
         app.addRestaurant(restaurant);
-//        Order order = new Order(user);
-//        order.addProduct(product1,1);
-//        order.addProduct(product2,3);
+
+        Order order = new Order(user);
+        order.addProduct(product1,1);
+        order.addProduct(product2,3);
+        user.addOrder(order);
+        app.addOrder(order);
         LogInService logInService = new LogInService();
         logInService.Main(app);
 //        System.out.println("ok");
