@@ -21,6 +21,12 @@ public class Seller extends User{
         this.sales = new ArrayList<Order>();
     }
 
+    public Seller(String username, String fullname, String email, String password, String phonenumber, String adress, String cardnumber, Restaurant restaurant, String id) {
+        super(username, fullname, email, password, phonenumber, adress, cardnumber, id);
+        this.restaurant = restaurant;
+        this.sales = new ArrayList<Order>();
+    }
+
     @Override
     public String toString() {
         return "Seller{" +

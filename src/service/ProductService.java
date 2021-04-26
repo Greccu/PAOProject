@@ -1,15 +1,29 @@
 package service;
 
 import model.accounts.Seller;
+import model.products.Ingredient;
 import model.products.Product;
 import model.restaurant.Restaurant;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+//import java.text.DateFormat;
+//import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+//import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class ProductService {
+    private static ProductService instance = null;
+
+    private ProductService(){}
+
+    public static ProductService getInstance(){
+        if (instance == null) {
+            instance = new ProductService();
+        }
+        return instance;
+    }
+
     Scanner scanner = new Scanner(System.in);
 
     public Product createProduct() {
@@ -19,6 +33,8 @@ public class ProductService {
         System.out.println("Enter Product Price");
         double price = scanner.nextDouble();
         System.out.println("Enter ingredients list");
+        List<String> ingredientList = new ArrayList<>();
+
         scanner.nextLine();
         for (; ; ) {
             System.out.println("Add another ingredient? Y/N");
@@ -26,23 +42,12 @@ public class ProductService {
             if (op.equals("Y")) {
                 System.out.println("Enter ingredient name");
                 String ingName = scanner.nextLine();
-
-                for (; ; ) {
-                    try {
-                        System.out.println("Enter expiry date(format = dd/mm/yyyy)");
-                        String d = scanner.nextLine();
-                        Date date = new SimpleDateFormat("dd/mm/yyyy").parse(d);
-                        break;
-                    } catch (java.text.ParseException e) {
-                        System.out.println("Invalid date format");
-                    }
-                }
+                ingredientList.add(ingName);
             } else {
                 break;
             }
         }
-        Product p = new Product();
-        return p;
+        return new Product(name,ingredientList,price);
     }
 
     public void removeProduct(Seller seller, Restaurant restaurant, String productName){

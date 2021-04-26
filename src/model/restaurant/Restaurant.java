@@ -3,13 +3,14 @@ package model.restaurant;
 import model.products.Product;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Restaurant {
-    private final String id = UUID.randomUUID().toString();
+    private String id;
     private String name;
     private String adress;
-    private ArrayList<Product> menu;
+    private List<Product> menu;
 
     public Restaurant() {
         menu = new ArrayList<Product>();
@@ -19,7 +20,23 @@ public class Restaurant {
         this.name = name;
         this.adress = adress;
         menu = new ArrayList<Product>();
+        this.id = UUID.randomUUID().toString();
     }
+
+    public Restaurant(String name, String adress, String id) {
+        this.name = name;
+        this.adress = adress;
+        menu = new ArrayList<Product>();
+        this.id = id;
+    }
+
+    public Restaurant(String name, String adress, String id, List<Product> menu) {
+        this.name = name;
+        this.adress = adress;
+        this.menu = menu;
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Restaurant{" +
@@ -48,11 +65,11 @@ public class Restaurant {
         this.adress = adress;
     }
 
-    public ArrayList<Product> getMenu() {
+    public List<Product> getMenu() {
         return menu;
     }
 
-    public void setMenu(ArrayList<Product> menu) {
+    public void setMenu(List<Product> menu) {
         this.menu = menu;
     }
 

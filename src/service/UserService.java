@@ -10,6 +10,17 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class UserService {
+    private static UserService instance = null;
+
+    private UserService(){}
+
+    public static UserService getInstance(){
+        if (instance == null) {
+            instance = new UserService();
+        }
+        return instance;
+    }
+
     Scanner scanner = new Scanner(System.in);
     public void Main(App app, User user) {
         System.out.println("\nLogged in as User");

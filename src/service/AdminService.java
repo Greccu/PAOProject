@@ -7,6 +7,17 @@ import model.app.App;
 import java.util.Scanner;
 
 public class AdminService {
+    private static AdminService instance = null;
+
+    private AdminService(){}
+
+    public static AdminService getInstance(){
+        if (instance == null) {
+            instance = new AdminService();
+        }
+        return instance;
+    }
+
     private Scanner scanner = new Scanner(System.in);
     public void Main(App app, Admin admin) {
         System.out.println("\nLogged in as Admin");
@@ -20,7 +31,7 @@ public class AdminService {
             if(option == 0){
                 break;
             }else if(option == 2){
-                UserService userService = new UserService();
+                UserService userService = UserService.getInstance();
                 userService.Main(app,admin);
             }else if(option != 1){
                 System.out.println("Invalid option");

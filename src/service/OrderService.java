@@ -8,6 +8,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class OrderService {
+    private static OrderService instance = null;
+
+    private OrderService(){}
+
+    public static OrderService getInstance(){
+        if (instance == null) {
+            instance = new OrderService();
+        }
+        return instance;
+    }
+
     private Scanner scanner = new Scanner(System.in);
 
     public List<Order> getActiveOrders(App app){

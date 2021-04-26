@@ -21,6 +21,12 @@ public class Driver extends User{
         this.deliveries = new ArrayList<Order>();
     }
 
+    public Driver(String username, String fullname, String email, String password, String phonenumber, String adress, String cardnumber, Car car, String id) {
+        super(username, fullname, email, password, phonenumber, adress, cardnumber, id);
+        this.car = car;
+        this.deliveries = new ArrayList<Order>();
+    }
+
     @Override
     public String toString() {
         return "Driver{" +

@@ -11,9 +11,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DriverService {
+    private static DriverService instance = null;
+
+    private DriverService(){}
+
+    public static DriverService getInstance(){
+        if (instance == null) {
+            instance = new DriverService();
+        }
+        return instance;
+    }
+
     private final Scanner scanner = new Scanner(System.in);
     //ProductService productService = new ProductService();
-    OrderService orderService = new OrderService();
+    OrderService orderService = OrderService.getInstance();
     public void Main(App app, Driver driver) {
         System.out.println("\nLogged in as Driver");
         int option;
@@ -26,7 +37,7 @@ public class DriverService {
             if(option == 0){
                 break;
             }else if(option == 2){
-                UserService userService = new UserService();
+                UserService userService = UserService.getInstance();
                 userService.Main(app, driver);
             }else if(option != 1){
                 System.out.println("Invalid option");

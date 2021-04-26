@@ -5,18 +5,26 @@ import java.util.Set;
 import java.util.UUID;
 
 public class Product {
-    private final String id = UUID.randomUUID().toString();
+    private String id;
     private String name;
-    List<Ingredient> ingredients;
+    List<String> ingredients;
     private double price;
 
     public  Product(){
-        ingredients = new ArrayList<Ingredient>();
+        ingredients = new ArrayList<String>();
     }
-    public Product(String name, ArrayList<Ingredient> ingredients, double price) {
+    public Product(String name, List<String> ingredients, double price) {
         this.name = name;
         this.ingredients = ingredients;
         this.price = price;
+        this.id = UUID.randomUUID().toString();
+    }
+
+    public Product(String name, List<String> ingredients, double price , String id) {
+        this.name = name;
+        this.ingredients = ingredients;
+        this.price = price;
+        this.id = id;
     }
 
     public Product(String name, double price) {
@@ -43,11 +51,11 @@ public class Product {
         this.name = name;
     }
 
-    public List<Ingredient> getIngredients() {
+    public List<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(ArrayList<Ingredient> ingredients) {
+    public void setIngredients(ArrayList<String> ingredients) {
         this.ingredients = ingredients;
     }
 

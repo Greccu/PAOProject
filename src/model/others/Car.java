@@ -3,7 +3,7 @@ package model.others;
 import java.util.UUID;
 
 public class Car {
-    private final String id = UUID.randomUUID().toString();
+    private String id;
     private String brand;
     private String model;
     private String numberPlate;
@@ -21,6 +21,16 @@ public class Car {
         this.numberPlate = numberPlate;
         this.fabricationYear = fabricationYear;
         this.horsePower = horsePower;
+        this.id = UUID.randomUUID().toString();
+    }
+
+    public Car(String brand, String model, String numberPlate, int fabricationYear, int horsePower, String id) {
+        this.brand = brand;
+        this.model = model;
+        this.numberPlate = numberPlate;
+        this.fabricationYear = fabricationYear;
+        this.horsePower = horsePower;
+        this.id = id;
     }
 
     @Override

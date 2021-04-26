@@ -1,16 +1,14 @@
 package model.products;
 
-import java.util.Date;
+//import java.util.Date;
 import java.util.UUID;
 
 public class Ingredient {
     private final String id = UUID.randomUUID().toString();
     private String name;
-    private Date expiryDate;
 
-    public Ingredient(String name, Date expiryDate) {
+    public Ingredient(String name) {
         this.name = name;
-        this.expiryDate = expiryDate;
     }
 
     @Override
@@ -18,7 +16,6 @@ public class Ingredient {
         return "Ingredient{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", expirydate=" + expiryDate +
                 '}';
     }
 
@@ -32,13 +29,5 @@ public class Ingredient {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Date getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(Date expiryDate) {
-        this.expiryDate = expiryDate;
     }
 }

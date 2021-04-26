@@ -34,7 +34,7 @@ public class App {
         addAdmin(admin);
     }
 
-    public static App App() {
+    public static App getInstance() {
         if (instance == null) {
             instance = new App();
         }

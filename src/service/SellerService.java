@@ -5,13 +5,25 @@ import model.accounts.Seller;
 import model.accounts.User;
 import model.app.App;
 //import model.products.Product;
+import model.products.Product;
 import model.restaurant.Restaurant;
 
 import java.util.Scanner;
 
 public class SellerService {
+    private static SellerService instance = null;
+
+    private SellerService(){}
+
+    public static SellerService getInstance(){
+        if (instance == null) {
+            instance = new SellerService();
+        }
+        return instance;
+    }
+    private final CSVWriter csvWriter = CSVWriter.getInstance();
     private final Scanner scanner = new Scanner(System.in);
-    ProductService productService = new ProductService();
+    ProductService productService = ProductService.getInstance();
     public void Main(App app, Seller seller) {
         System.out.println("\nLogged in as Seller");
         int option;
@@ -24,7 +36,7 @@ public class SellerService {
             if(option == 0){
                 break;
             }else if(option == 2){
-                UserService userService = new UserService();
+                UserService userService = UserService.getInstance();
                 userService.Main(app,seller);
             }else if(option != 1){
                 System.out.println("Invalid option");
@@ -59,8 +71,9 @@ public class SellerService {
                         }
                         case 3 -> System.out.println(restaurant.getMenu());
                         case 4 -> {
-
-                            restaurant.addProduct(productService.createProduct());
+                            Product product = productService.createProduct();
+                            csvWriter.write(product);
+                            restaurant.addProduct(product);
                         }
                         case 5 -> {
                             System.out.println("Enter product name");

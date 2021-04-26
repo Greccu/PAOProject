@@ -7,11 +7,23 @@ import model.accounts.User;
 import model.app.App;
 import model.others.Car;
 import model.restaurant.Restaurant;
-
 import java.util.Scanner;
 
 public class LogInService {
-    private Scanner scanner = new Scanner(System.in);
+    private static LogInService instance = null;
+
+    private LogInService(){}
+
+    public static LogInService getInstance(){
+        if (instance == null) {
+            instance = new LogInService();
+        }
+        return instance;
+    }
+
+    private final Scanner scanner = new Scanner(System.in);
+    private final CSVWriter csvWriter = CSVWriter.getInstance();
+
     public void Main(App app) {
 
         int option;
@@ -50,24 +62,24 @@ public class LogInService {
                         } else if (user instanceof Admin) {
 //                            System.out.println("Logged in as Admin");
                             //admin service
-                            AdminService adminService = new AdminService();
+                            AdminService adminService = AdminService.getInstance();
                             adminService.Main(app, (Admin)user);
                             break;
                         } else if (user instanceof Driver) {
 //                            System.out.println("Logged in as Driver");
                             //driver service
-                            DriverService driverService = new DriverService();
+                            DriverService driverService = DriverService.getInstance();
                             driverService.Main(app, (Driver)user);
                             break;
                         } else if (user instanceof Seller) {
 //                            System.out.println("Logged in as Seller");
                             //seller service
-                            SellerService sellerService = new SellerService();
+                            SellerService sellerService = SellerService.getInstance();
                             sellerService.Main(app, (Seller)user);
                             break;
                         } else {
 //                            System.out.println("Logged in as Normal User");
-                            UserService userService = new UserService();
+                            UserService userService = UserService.getInstance();
                             userService.Main(app, user);
                             break;
                         }
@@ -115,11 +127,14 @@ public class LogInService {
         String cardnumber = scanner.next();
 
         switch (type) {
-            case 1: //user
+//user
+            case 1 -> {
                 User user = new User(username, fullname, email, password, phonenumber, address, cardnumber);
+                csvWriter.write(user);
                 app.addUser(user);
-                break;
-            case 2: //driver
+            }
+//driver
+            case 2 -> {
                 System.out.println("Enter your car information");
                 System.out.println("Brand");
                 String brand = scanner.next();
@@ -132,19 +147,22 @@ public class LogInService {
                 System.out.println("Horse Power");
                 int horsepower = scanner.nextInt();
                 Car car = new Car(brand, model, numberplate, fabricationyear, horsepower);
-                Driver driver = new Driver(username, fullname, email, password, phonenumber, address, cardnumber,car);
+                Driver driver = new Driver(username, fullname, email, password, phonenumber, address, cardnumber, car);
                 app.addDriver(driver);
-                break;
-            case 3: //seller
+                csvWriter.write(driver);
+            }
+//seller
+            case 3 -> {
                 System.out.println("Enter your restaurant information");
                 System.out.println("Name");
                 String name = scanner.next();
                 System.out.println("Address");
                 String raddress = scanner.next();
-                Restaurant restaurant = new Restaurant(name,raddress);
-                Seller seller = new Seller(username, fullname, email, password, phonenumber, address, cardnumber,restaurant);
+                Restaurant restaurant = new Restaurant(name, raddress);
+                Seller seller = new Seller(username, fullname, email, password, phonenumber, address, cardnumber, restaurant);
                 app.addSeller(seller);
-                break;
+                csvWriter.write(seller);
+            }
         }
     }
 }

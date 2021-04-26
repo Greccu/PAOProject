@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class User{
-    protected final String id = UUID.randomUUID().toString();
+    protected String id;
     protected String username;
     protected String fullName;
     protected String email;
@@ -19,8 +19,20 @@ public class User{
 
     public User() {
         this.orders = new ArrayList<>();
+        this.id = UUID.randomUUID().toString();
     }
 
+    public User(String username, String fullName, String email, String password, String phoneNumber, String address, String cardNumber, String id) {
+        this.username = username;
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.cardNumber = cardNumber;
+        this.orders = new ArrayList<Order>();
+        this.id = id;
+    }
     public User(String username, String fullName, String email, String password, String phoneNumber, String address, String cardNumber) {
         this.username = username;
         this.fullName = fullName;
@@ -29,7 +41,7 @@ public class User{
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.cardNumber = cardNumber;
-        orders = new ArrayList<Order>();
+        this.orders = new ArrayList<Order>();
     }
 
     @Override
