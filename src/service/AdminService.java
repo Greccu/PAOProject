@@ -18,7 +18,9 @@ public class AdminService {
         return instance;
     }
 
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
+    private final AuditService audit = AuditService.getInstance();
+
     public void Main(App app, Admin admin) {
         System.out.println("\nLogged in as Admin");
         System.out.println(admin);
@@ -49,37 +51,42 @@ public class AdminService {
                         System.out.println("Exiting...");
                         break;
                     }
-                    switch (option2){
-                        case 1:
+                    switch (option2) {
+                        case 1 -> {
+                            audit.write("Show Users - "+admin.getUsername());
                             System.out.println(app.getUsers());
                             scanner.nextLine();
                             scanner.nextLine();
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
+                            audit.write("Show Drivers - "+admin.getUsername());
                             System.out.println(app.getDrivers());
                             scanner.nextLine();
                             scanner.nextLine();
-                            break;
-                        case 3:
+                        }
+                        case 3 -> {
+                            audit.write("Show Sellers - "+admin.getUsername());
                             System.out.println(app.getSellers());
                             scanner.nextLine();
                             scanner.nextLine();
-                            break;
-                        case 4:
+                        }
+                        case 4 -> {
+                            audit.write("Show Restaurants - "+admin.getUsername());
                             System.out.println(app.getRestaurants());
                             scanner.nextLine();
                             scanner.nextLine();
-                            break;
-                        case 5:
+                        }
+                        case 5 -> {
+                            audit.write("Show Orders - "+admin.getUsername());
                             System.out.println(app.getOrders());
                             scanner.nextLine();
                             scanner.nextLine();
-                            break;
-                        default:
+                        }
+                        default -> {
                             System.out.println("Invalid option");
                             scanner.nextLine();
                             scanner.nextLine();
-                            break;
+                        }
                     }
                 }
             }

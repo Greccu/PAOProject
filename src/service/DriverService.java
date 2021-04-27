@@ -23,8 +23,10 @@ public class DriverService {
     }
 
     private final Scanner scanner = new Scanner(System.in);
-    //ProductService productService = new ProductService();
-    OrderService orderService = OrderService.getInstance();
+    //private final ProductService productService = new ProductService();
+    private final OrderService orderService = OrderService.getInstance();
+    private final AuditService audit = AuditService.getInstance();
+
     public void Main(App app, Driver driver) {
         System.out.println("\nLogged in as Driver");
         int option;
@@ -58,6 +60,7 @@ public class DriverService {
                     }
                     switch (option){
                         case 1 -> {
+                            audit.write("Show Available Orders - "+driver.getUsername());
                             System.out.println("Available orders");
                             System.out.println();
                             for(int i = 0; i<activeOrders.size(); i++){
@@ -66,6 +69,7 @@ public class DriverService {
                             }
                         }
                         case 2 -> {
+                            audit.write("Deliver Order - "+driver.getUsername());
                             System.out.println("Enter order number");
                             int index = scanner.nextInt();
                             System.out.print("Order selected: ");
@@ -78,6 +82,10 @@ public class DriverService {
                                 activeOrders.get(index).setDriver(driver);
                             }
 
+                        }
+                        case 3 -> {
+                            audit.write("Show Order History - "+driver.getUsername());
+                            System.out.println(driver.getDeliveries());
                         }
                     }
                 }

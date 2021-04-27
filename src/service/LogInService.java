@@ -23,6 +23,7 @@ public class LogInService {
 
     private final Scanner scanner = new Scanner(System.in);
     private final CSVWriter csvWriter = CSVWriter.getInstance();
+    private final AuditService audit = AuditService.getInstance();
 
     public void Main(App app) {
 
@@ -59,29 +60,32 @@ public class LogInService {
                                 break;
                             }
 
-                        } else if (user instanceof Admin) {
-//                            System.out.println("Logged in as Admin");
-                            //admin service
-                            AdminService adminService = AdminService.getInstance();
-                            adminService.Main(app, (Admin)user);
-                            break;
-                        } else if (user instanceof Driver) {
-//                            System.out.println("Logged in as Driver");
-                            //driver service
-                            DriverService driverService = DriverService.getInstance();
-                            driverService.Main(app, (Driver)user);
-                            break;
-                        } else if (user instanceof Seller) {
-//                            System.out.println("Logged in as Seller");
-                            //seller service
-                            SellerService sellerService = SellerService.getInstance();
-                            sellerService.Main(app, (Seller)user);
-                            break;
                         } else {
+                            audit.write("Login - "+user.getUsername());
+                            if (user instanceof Admin) {
+//                            System.out.println("Logged in as Admin");
+                                //admin service
+                                AdminService adminService = AdminService.getInstance();
+                                adminService.Main(app, (Admin)user);
+                                break;
+                            } else if (user instanceof Driver) {
+//                            System.out.println("Logged in as Driver");
+                                //driver service
+                                DriverService driverService = DriverService.getInstance();
+                                driverService.Main(app, (Driver)user);
+                                break;
+                            } else if (user instanceof Seller) {
+//                            System.out.println("Logged in as Seller");
+                                //seller service
+                                SellerService sellerService = SellerService.getInstance();
+                                sellerService.Main(app, (Seller)user);
+                                break;
+                            } else {
 //                            System.out.println("Logged in as Normal User");
-                            UserService userService = UserService.getInstance();
-                            userService.Main(app, user);
-                            break;
+                                UserService userService = UserService.getInstance();
+                                userService.Main(app, user);
+                                break;
+                            }
                         }
                     }
                     break;
@@ -130,8 +134,9 @@ public class LogInService {
 //user
             case 1 -> {
                 User user = new User(username, fullname, email, password, phonenumber, address, cardnumber);
-                csvWriter.write(user);
                 app.addUser(user);
+                csvWriter.write(user);
+                audit.write("SignUp - "+user.getUsername());
             }
 //driver
             case 2 -> {
@@ -150,6 +155,7 @@ public class LogInService {
                 Driver driver = new Driver(username, fullname, email, password, phonenumber, address, cardnumber, car);
                 app.addDriver(driver);
                 csvWriter.write(driver);
+                audit.write("SignUp "+driver.getUsername());
             }
 //seller
             case 3 -> {
@@ -162,6 +168,7 @@ public class LogInService {
                 Seller seller = new Seller(username, fullname, email, password, phonenumber, address, cardnumber, restaurant);
                 app.addSeller(seller);
                 csvWriter.write(seller);
+                audit.write("SignUp "+seller.getUsername());
             }
         }
     }

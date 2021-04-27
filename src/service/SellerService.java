@@ -23,7 +23,9 @@ public class SellerService {
     }
     private final CSVWriter csvWriter = CSVWriter.getInstance();
     private final Scanner scanner = new Scanner(System.in);
-    ProductService productService = ProductService.getInstance();
+    private final ProductService productService = ProductService.getInstance();
+    private final AuditService audit = AuditService.getInstance();
+
     public void Main(App app, Seller seller) {
         System.out.println("\nLogged in as Seller");
         int option;
@@ -55,8 +57,12 @@ public class SellerService {
                         break;
                     }
                     switch (option) {
-                        case 1 -> System.out.println(restaurant);
+                        case 1 -> {
+                            System.out.println(restaurant);
+                            audit.write("Show Restaurant Information - "+seller.getUsername());
+                        }
                         case 2 -> {
+                            audit.write("Edit Restaurant Information - "+seller.getUsername());
                             System.out.println("Enter new Restaurant information (leaving it empty means it doesn't change)");
                             System.out.print("Enter restaurant name: ");
                             String name = scanner.nextLine();
@@ -69,13 +75,18 @@ public class SellerService {
                                 restaurant.setAdress(adress);
                             }
                         }
-                        case 3 -> System.out.println(restaurant.getMenu());
+                        case 3 -> {
+                            System.out.println(restaurant.getMenu());
+                            audit.write("Show Restaurant Menu - "+seller.getUsername());
+                        }
                         case 4 -> {
+                            audit.write("Add Product To Menu - "+seller.getUsername());
                             Product product = productService.createProduct();
                             csvWriter.write(product);
                             restaurant.addProduct(product);
                         }
                         case 5 -> {
+                            audit.write("Delete Product From Menu - "+seller.getUsername());
                             System.out.println("Enter product name");
                             String prodName = scanner.nextLine();
                             productService.removeProduct(seller, restaurant, prodName);
