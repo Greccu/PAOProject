@@ -13,7 +13,7 @@ public class AuditService {
     private BufferedWriter bufferedWriter;
     private AuditService(){
         try{
-            Path path = Path.of("files/users.csv");
+            Path path = Path.of("files/audit.csv");
             if (!Files.exists(path)) {
                 try {
                     Files.createFile(path);

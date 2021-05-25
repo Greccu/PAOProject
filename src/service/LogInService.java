@@ -7,6 +7,11 @@ import model.accounts.User;
 import model.app.App;
 import model.others.Car;
 import model.restaurant.Restaurant;
+import repository.DriverRepository;
+import repository.ProductRepository;
+import repository.SellerRepository;
+import repository.UserRepository;
+
 import java.util.Scanner;
 
 public class LogInService {
@@ -22,8 +27,11 @@ public class LogInService {
     }
 
     private final Scanner scanner = new Scanner(System.in);
-    private final CSVWriter csvWriter = CSVWriter.getInstance();
+    //private final CSVWriter csvWriter = CSVWriter.getInstance();
     private final AuditService audit = AuditService.getInstance();
+    private static DriverRepository driverRepository = DriverRepository.getInstance();
+    private static SellerRepository sellerRepository = SellerRepository.getInstance();
+    private static UserRepository userRepository = UserRepository.getInstance();
 
     public void Main(App app) {
 
@@ -133,9 +141,11 @@ public class LogInService {
         switch (type) {
 //user
             case 1 -> {
+                System.out.println("creating user");
                 User user = new User(username, fullname, email, password, phonenumber, address, cardnumber);
                 app.addUser(user);
-                csvWriter.write(user);
+                //csvWriter.write(user);
+                userRepository.addUser(user);
                 audit.write("SignUp - "+user.getUsername());
             }
 //driver
@@ -154,7 +164,8 @@ public class LogInService {
                 Car car = new Car(brand, model, numberplate, fabricationyear, horsepower);
                 Driver driver = new Driver(username, fullname, email, password, phonenumber, address, cardnumber, car);
                 app.addDriver(driver);
-                csvWriter.write(driver);
+                userRepository.addUser(driver);
+                driverRepository.addDriver(driver);
                 audit.write("SignUp "+driver.getUsername());
             }
 //seller
@@ -167,9 +178,12 @@ public class LogInService {
                 Restaurant restaurant = new Restaurant(name, raddress);
                 Seller seller = new Seller(username, fullname, email, password, phonenumber, address, cardnumber, restaurant);
                 app.addSeller(seller);
-                csvWriter.write(seller);
+                userRepository.addUser(seller);
+                sellerRepository.addSeller(seller);
                 audit.write("SignUp "+seller.getUsername());
             }
         }
     }
+
+
 }

@@ -10,6 +10,11 @@ public class Seller extends User{
     private Restaurant restaurant;
     private List<Order> sales;
 
+    public Seller(User user, Restaurant restaurant){
+        super(user.username,user.fullName, user.email, user.password, user.phoneNumber, user.address,user.cardNumber,user.id);
+        this.restaurant = restaurant;
+    }
+
     public Seller(Restaurant restaurant) {
         this.restaurant = restaurant;
         this.sales = new ArrayList<Order>();

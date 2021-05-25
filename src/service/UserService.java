@@ -5,6 +5,7 @@ import model.app.App;
 import model.order.Order;
 import model.products.Product;
 import model.restaurant.Restaurant;
+import repository.UserRepository;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -24,6 +25,7 @@ public class UserService {
     public OrderService orderService = OrderService.getInstance();
     public AuditService audit = AuditService.getInstance();
     Scanner scanner = new Scanner(System.in);
+    private UserRepository userRepository = UserRepository.getInstance();
 
     public void Main(App app, User user) {
         System.out.println("\nLogged in as User");
@@ -69,6 +71,7 @@ public class UserService {
         for(;;){
             System.out.println("Select option");
             System.out.println("1. Show info");
+            System.out.println("2. Edit info");
             System.out.println("0. Back");
             int option = scanner.nextInt();
             switch (option){
@@ -77,9 +80,39 @@ public class UserService {
                 case 1:
                     System.out.println(user);
                     break;
+                case 2:
+                    update(user);
+                    break;
                 default:
                     System.out.println("Invalid option");
             }
         }
+    }
+
+    private void update(User user){
+        System.out.println("Username");
+        String username = scanner.next();
+        System.out.println("Password");
+        String password = scanner.next();
+        System.out.println("Full Name");
+        String fullname = scanner.next();
+        System.out.println("Email");
+        String email = scanner.next();
+        System.out.println("Phone number");
+        String phonenumber = scanner.next();
+        System.out.println("Address");
+        String address = scanner.next();
+        System.out.println("Card Number");
+        String cardnumber = scanner.next();
+
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setFullName(fullname);
+        user.setEmail(email);
+        user.setPhoneNumber(phonenumber);
+        user.setAddress(address);
+        user.setCardNumber(cardnumber);
+
+        userRepository.updateUser(user);
     }
 }

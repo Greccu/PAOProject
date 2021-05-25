@@ -10,6 +10,11 @@ public class Driver extends User{
     private Car car;
     private List<Order> deliveries;
 
+    public Driver(User user, Car car){
+        super(user.username,user.fullName, user.email, user.password, user.phoneNumber, user.address,user.cardNumber,user.id);
+        this.car = car;
+    }
+
     public Driver(String username, String fullname, String email, String password, String phonenumber, String adress, String cardnumber) {
         super(username, fullname, email, password, phonenumber, adress, cardnumber);
         this.deliveries = new ArrayList<Order>();

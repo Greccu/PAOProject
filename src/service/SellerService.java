@@ -7,6 +7,10 @@ import model.app.App;
 //import model.products.Product;
 import model.products.Product;
 import model.restaurant.Restaurant;
+import repository.DriverRepository;
+import repository.ProductRepository;
+import repository.SellerRepository;
+import repository.UserRepository;
 
 import java.util.Scanner;
 
@@ -21,10 +25,15 @@ public class SellerService {
         }
         return instance;
     }
-    private final CSVWriter csvWriter = CSVWriter.getInstance();
+    //private final CSVWriter csvWriter = CSVWriter.getInstance();
     private final Scanner scanner = new Scanner(System.in);
     private final ProductService productService = ProductService.getInstance();
     private final AuditService audit = AuditService.getInstance();
+
+    private static DriverRepository driverRepository = DriverRepository.getInstance();
+    private static ProductRepository productRepository = ProductRepository.getInstance();
+    private static SellerRepository sellerRepository = SellerRepository.getInstance();
+    private static UserRepository userRepository = UserRepository.getInstance();
 
     public void Main(App app, Seller seller) {
         System.out.println("\nLogged in as Seller");
@@ -82,7 +91,7 @@ public class SellerService {
                         case 4 -> {
                             audit.write("Add Product To Menu - "+seller.getUsername());
                             Product product = productService.createProduct();
-                            csvWriter.write(product);
+                            productRepository.addProduct(product, restaurant.getId());
                             restaurant.addProduct(product);
                         }
                         case 5 -> {

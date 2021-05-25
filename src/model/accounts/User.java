@@ -42,11 +42,13 @@ public class User{
         this.address = address;
         this.cardNumber = cardNumber;
         this.orders = new ArrayList<Order>();
+        this.id = UUID.randomUUID().toString();
     }
 
     @Override
     public String toString() {
         return "User{" +
+                "id='"+ id + '\'' +
                 "username='" + username + '\'' +
                 ", fullname='" + fullName + '\'' +
                 ", email='" + email + '\'' +
